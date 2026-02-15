@@ -5,8 +5,7 @@ import hospitalityImg from '../assets/hospitality.jpg'
 import domesticImg from '../assets/domestic.jpg'
 import heroImage from '../assets/domestic.jpg'
 import aboutImage from '../assets/accommodation.jpg'
-
-
+import logo from '../assets/icon.png';
 
 export default function TalonCleaningWebsite() {
     const [showQuoteModal, setShowQuoteModal] = useState(false);
@@ -112,11 +111,21 @@ export default function TalonCleaningWebsite() {
       `}</style>
 
             {/* Navigation */}
-            <nav className={`bg-[#1a1a33] fixed w-full top-0 z-50 transition-shadow duration-300 ${scrolled ? 'shadow-2xl' : 'shadow-lg'
-                }`}>
+            <nav
+                className={`bg-[#0F2A44] fixed w-full top-0 z-50 transition-shadow duration-300 ${scrolled ? 'shadow-2xl' : 'shadow-lg'
+                    }`}
+            >
                 <div className="max-w-7xl mx-auto px-10 flex justify-between items-center h-20">
-                    <a href="#" className="font-playfair text-2xl font-bold text-white flex items-center gap-2">
-                        <span className="text-3xl">🦅</span>
+                    <a
+                        href="#"
+                        className="font-playfair text-2xl font-bold text-white flex items-center gap-3"
+                    >
+                        
+                        <img
+                            src= {logo}  
+                            alt="Talon Cleaning Logo"
+                            className="h-20 w-auto object-contain"
+                        />
                         TALON CLEANING
                     </a>
 
