@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/icon.png';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+
 
 export default function Service({
     setShowQuoteModal,
@@ -159,61 +162,6 @@ export default function Service({
             }
         `}</style>
 
-            {/* Navigation */}
-            <nav
-                className={`bg-[#0F2A44] fixed w-full top-0 z-50 transition-shadow duration-300 ${scrolled ? 'shadow-2xl' : 'shadow-lg'
-                    }`}
-            >
-                <div className="max-w-7xl mx-auto px-10 flex justify-between items-center h-24">
-                    <button
-                        onClick={() => navigate('/')}
-                        className="font-playfair text-2xl font-bold text-white flex items-center gap-3 hover:opacity-90 transition-opacity"
-                    >
-                        <img
-                            src={logo}
-                            alt="Talon Cleaning Logo"
-                            className="h-24 w-auto object-contain"
-                        />
-                        <span className="tracking-wide">
-                            TALON <span className="text-[#C6A35A]">CLEANING</span> SERVICES
-                        </span>                    
-                         </button>
-
-                    <div className="hidden md:flex gap-10 items-center">
-                        <button
-                            onClick={() => navigate('/')}
-                            className="text-white hover:text-[#C6A35A] transition-colors duration-300"
-                        >
-                            Home
-                        </button>
-                        <button
-                            onClick={() => navigate('/service')}
-                            className="text-white hover:text-[#C6A35A] transition-colors duration-300"
-                        >
-                            Services
-                        </button>
-                        <button
-                            onClick={() => scrollToSection('about')}
-                            className="text-white hover:text-[#C6A35A] transition-colors duration-300"
-                        >
-                            About
-                        </button>
-                        <button
-                            onClick={() => scrollToSection('contact')}
-                            className="text-white hover:text-[#C6A35A] transition-colors duration-300"
-                        >
-                            Contact
-                        </button>
-                        <button
-                            onClick={() => setShowQuoteModal(true)}
-                            className="bg-[#C6A35A] text-[#0F2A44] px-7 py-3 rounded font-semibold hover:bg-[#B89245] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-                        >
-                            Get a Free Quote
-                        </button>
-                    </div>
-                </div>
-            </nav>
-
             {/* Hero Section */}
             <section className="relative pt-44 pb-20 px-6 text-white overflow-hidden">
                 {/* Background Image */}
@@ -324,49 +272,6 @@ export default function Service({
                     );
                 })}
             </div>
-
-            {/* Footer */}
-            <footer className="bg-[#0F2A44] text-white py-4 px-6">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-10">
-                        <div>
-                            <h3 className="font-playfair text-xl mb-5 text-[#C6A35A]">Talon Cleaning Services</h3>
-                            <p className="text-white/80">
-                                Reliable, detail-focused cleaning for commercial, accommodation, hospitality, and
-                                domestic environments.
-                            </p>
-                        </div>
-                        <div>
-                            <h3 className="font-playfair text-xl mb-5 text-[#C6A35A]">Services</h3>
-                            <ul className="space-y-3">
-                                <li><button onClick={() => scrollToSection('services')} className="text-white/80 hover:text-[#C6A35A] transition-colors">Commercial Cleaning</button></li>
-                                <li><button onClick={() => scrollToSection('services')} className="text-white/80 hover:text-[#C6A35A] transition-colors">Accommodation Cleaning</button></li>
-                                <li><button onClick={() => scrollToSection('services')} className="text-white/80 hover:text-[#C6A35A] transition-colors">Hospitality Cleaning</button></li>
-                                <li><button onClick={() => scrollToSection('services')} className="text-white/80 hover:text-[#C6A35A] transition-colors">Domestic Cleaning</button></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="font-playfair text-xl mb-5 text-[#C6A35A]">Company</h3>
-                            <ul className="space-y-3">
-                                <li><button onClick={() => scrollToSection('about')} className="text-white/80 hover:text-[#C6A35A] transition-colors">About Us</button></li>
-                                <li><button onClick={() => scrollToSection('services')} className="text-white/80 hover:text-[#C6A35A] transition-colors">Our Services</button></li>
-                                <li><button onClick={() => scrollToSection('contact')} className="text-white/80 hover:text-[#C6A35A] transition-colors">Contact</button></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="font-playfair text-xl mb-5 text-[#C6A35A]">Contact Us</h3>
-                            <ul className="space-y-3 text-white/80">
-                                <li>📞 Phone Number: 09037362051</li>
-                                <li>✉ Email Address: TalonCleaningService@gmail.com</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="text-center pt-8 border-t border-white/10 text-white/60">
-                        <p>© 2026 Talon Cleaning Services — All Rights Reserved</p>
-                    </div>
-                </div>
-            </footer>
-
 
         </div>
     );

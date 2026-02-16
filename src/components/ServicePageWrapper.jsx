@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Service from './Service';
-import QuoteModal from '../components/QuoteModal';
+import Service from '../pages/Service';
+import QuoteModal from './QuoteModal';
 import commercialImg from '../assets/commercial.jpg';
 import accommodationImg from '../assets/accommodation.jpg';
 import hospitalityImg from '../assets/hospitality.jpg';
