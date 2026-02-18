@@ -52,7 +52,7 @@ export default function QuoteModal({ showQuoteModal, setShowQuoteModal }) {
     setTimeout(() => {
       setQuoteMessage(null);
       setShowQuoteModal(false); // close the modal whether success or error
-    }, 5000);
+    }, 3000);
   };
 
   if (!showQuoteModal) return null;
