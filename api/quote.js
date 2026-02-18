@@ -14,7 +14,7 @@ const redis = new Redis({
 // ✅ Setup rate limiter (outside handler)
 const ratelimit = new Ratelimit({
   redis,
-  limiter: Ratelimit.slidingWindow(1, "10 m"), // 5 requests per 10 minutes per IP
+  limiter: Ratelimit.slidingWindow(3, "10 m"), // 5 requests per 10 minutes per IP
 });
 
 export default async function handler(req, res) {
