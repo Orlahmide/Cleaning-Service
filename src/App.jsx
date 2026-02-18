@@ -9,6 +9,7 @@ import QuoteModal from "./components/QuoteModal";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import ScrollToTop from "./components/ScrollToTop";
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App() {
   const [showQuoteModal, setShowQuoteModal] = useState(false);
@@ -63,6 +64,7 @@ export default function App() {
         quoteSuccess={quoteSuccess}
         setQuoteSuccess={setQuoteSuccess}
       />
+      <Analytics />
     </div>
   );
 }

@@ -1,13 +1,43 @@
-import { Resend } from 'resend';
+import { Resend } from "resend";
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// ✅ Setup Redis (outside handler)
+// Redis client for rate limiting
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN,
+});
+
+// ✅ Setup rate limiter (outside handler)
+const ratelimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(1, "10 m"), // 5 requests per 10 minutes per IP
+});
+
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method not allowed" });
   }
 
-  // Include all fields that the form sends
+  // ✅ Get IP address properly (important for Vercel)
+  const ip =
+    req.headers["x-forwarded-for"]?.split(",")[0] ||
+    req.socket?.remoteAddress ||
+    "anonymous";
+
+  // ✅ Apply rate limit
+  const { success } = await ratelimit.limit(ip);
+
+  if (!success) {
+    return res.status(429).json({
+      message: "Too many requests. Please try again later.",
+    });
+  }
+
+  // ✅ Extract form data
   const { name, email, phone, service, frequency, contact, message } = req.body;
 
   try {
