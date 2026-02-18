@@ -43,35 +43,161 @@ const Contact = ({ onGetQuote = () => {} }) => {
 
   return (
     <div className="min-h-screen bg-white">
+      <style>{`
+       @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
+        
+        .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+        .font-body { font-family: 'Jost', 'Helvetica Neue', sans-serif; }
+
+        @keyframes bgZoom {
+          from { opacity: 0; transform: scale(1.05); }
+          to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideDown {
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes lineGrow {
+          from { width: 0; opacity: 0; }
+          to { width: 60px; opacity: 1; }
+        }
+
+        .hero-bg-animate { animation: bgZoom 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        .animate-slideDown { animation: slideDown 0.8s ease 0.2s both; }
+        .animate-fadeUp-1 { animation: fadeUp 0.9s ease 0.4s both; }
+        .animate-fadeUp-2 { animation: fadeUp 0.9s ease 0.6s both; }
+        .animate-fadeUp-3 { animation: fadeUp 0.9s ease 0.8s both; }
+        .animate-lineGrow { animation: lineGrow 0.8s ease 0.5s both; }
+
+        .breadcrumb-item {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          color: rgba(255, 255, 255, 0.6);
+          font-size: 13px;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+        }
+        .breadcrumb-item:last-child {
+          color: #C6A35A;
+        }
+
+        .feature-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 20px;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 50px;
+          font-size: 14px;
+          font-weight: 500;
+          transition: all 0.3s ease;
+        }
+        .feature-pill:hover {
+          background: rgba(198, 163, 90, 0.2);
+          border-color: rgba(198, 163, 90, 0.4);
+          transform: translateY(-2px);
+        }
+
+        .gold-divider {
+          display: inline-block;
+          width: 60px;
+          height: 2px;
+          background: #C6A35A;
+        }
+      `}</style>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 text-center mt-20 overflow-hidden">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-top"
-          style={{ backgroundImage: `url(${faqHeroImage})` }}
-        />
+<section
+  className="relative overflow-hidden px-6 md:px-12"
+  style={{
+    minHeight: "65vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    marginTop: "80px",
+  }}
+>
+  {/* Background Image with Animation */}
+  <div
+    className="absolute inset-0 bg-cover bg-center hero-bg-animate"
+    style={{ backgroundImage: `url(${faqHeroImage})` }}
+  />
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F2A44]/85 to-[#1a3a5c]/85" />
+  {/* Gradient Overlay */}
+  <div
+    className="absolute inset-0"
+    style={{
+      background:
+        "linear-gradient(110deg, rgba(15,42,68,0.88) 0%, rgba(15,42,68,0.85) 100%, rgba(26,58,92,0.82) 100%)",
+    }}
+  />
 
-        {/* Content */}
-        <div className="relative max-w-4xl mx-auto z-10">
-          <h1 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready for a Cleaner,{" "}
-            <span className="text-[#C6A35A]">Stress-Free Space?</span>
-          </h1>
+  {/* Decorative Elements */}
+  <div className="absolute inset-0 opacity-[0.03]">
+    <div className="absolute top-16 right-16 w-64 h-64 border border-white rounded-full"></div>
+    <div className="absolute bottom-16 left-16 w-48 h-48 border border-white rounded-full"></div>
+  </div>
 
-          <p className="text-xl text-white/90 leading-relaxed mb-4">
-            Let us take care of the cleaning so you can focus on what matters
-            most.
-          </p>
+  {/* Vertical Gold Accent */}
+  <div
+    className="absolute left-0 top-0 bottom-0 w-1"
+    style={{
+      background:
+        "linear-gradient(180deg, transparent 0%, #C6A35A 25%, #C6A35A 75%, transparent 100%)",
+    }}
+  />
 
-          <p className="text-lg text-white/80 leading-relaxed max-w-3xl mx-auto">
-            Whether you need regular cleaning, a deep clean, or professional
-            support for your business or property, we're here to help.
-          </p>
-        </div>
-      </section>
+  {/* Content Container */}
+  <div className="relative z-10 max-w-4xl mx-auto text-center">
+    {/* Badge */}
+    <div className="animate-fadeUp-1 mb-6">
+      <span className="font-body inline-block text-[10px] font-semibold tracking-[0.25em] uppercase text-[#C6A35A] px-5 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+        Premium Cleaning Services
+      </span>
+    </div>
+
+    {/* Main Heading */}
+    <h1 className="animate-fadeUp-1 font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+      Ready for a Cleaner, <br />
+      <span className="italic text-[#C6A35A]">Stress-Free Space?</span>
+    </h1>
+
+    {/* Decorative Divider */}
+    <div className="animate-fadeUp-2 flex items-center justify-center gap-4 mb-8">
+      <span className="gold-divider animate-lineGrow"></span>
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 20 20"
+        className="text-[#C6A35A] opacity-70"
+      >
+        <path fill="currentColor" d="M10,0 L12,8 L20,10 L12,12 L10,20 L8,12 L0,10 L8,8 Z" />
+      </svg>
+      <span className="gold-divider animate-lineGrow"></span>
+    </div>
+
+    {/* Description */}
+    <p className="animate-fadeUp-2 font-body text-base md:text-lg text-white/85 leading-relaxed max-w-3xl mx-auto mb-6">
+      Let us take care of the cleaning so you can focus on what matters most.
+    </p>
+    <p className="animate-fadeUp-2 font-body text-base md:text-lg text-white/80 leading-relaxed max-w-3xl mx-auto">
+      Whether you need regular cleaning, a deep clean, or professional support for your business or property, we're here to help.
+    </p>
+
+    
+  </div>
+</section>
+
 
       {/* Main Content - Two Columns */}
       {/* Contact & Map Section */}

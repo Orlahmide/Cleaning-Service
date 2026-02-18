@@ -34,7 +34,7 @@ const Navbar = ({ onGetQuote = () => {} }) => {
         scrolled ? "shadow-2xl" : "shadow-lg"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 flex justify-between items-center h-20 md:h-24">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 md:px-8 flex justify-between items-center h-20 md:h-24">
         {/* Logo */}
         <a
           href="#"
@@ -49,13 +49,14 @@ const Navbar = ({ onGetQuote = () => {} }) => {
             alt="Talon Cleaning Logo"
             className="h-[90px] sm:h-25 md:h-[100px] w-auto object-contain"
           />
-          <span className="hidden md:inline font-playfair text-xl md:text-2xl font-bold text-white tracking-wide">
+          <span className="hidden md:inline font-playfair text-sm md:text-lg font-bold text-white tracking-wide" >
+            
             TALON <span className="text-[#C6A35A]">CLEANING</span> SERVICES
           </span>
         </a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-6 lg:gap-10 items-center text-sm sm:text-base">
+        <div className="hidden md:flex gap-6 lg:gap-6 items-center text-sm sm:text-base">
           <button onClick={() => navigate("/")} className={getLinkClasses("/")}>
             Home
           </button>
@@ -72,7 +73,7 @@ const Navbar = ({ onGetQuote = () => {} }) => {
             onClick={() => navigate("/contact")}
             className={getLinkClasses("/contact")}
           >
-            Contact
+            Contact Us
           </button>
           <button onClick={() => navigate("/FAQs")} className={getLinkClasses("/FAQs")}>
             FAQs

@@ -254,7 +254,7 @@ const AboutUs = ({ onGetQuote = () => {} }) => {
       `}</style>
 
       {/* ── 1. HERO ─────────────────────────────────────────── */}
-      <section className="relative overflow-hidden" style={{ minHeight: "60vh", display: "flex", alignItems: "center", marginTop: "80px" }}>
+      <section className="relative overflow-hidden" style={{ minHeight: "65vh", display: "flex", alignItems: "center", marginTop: "80px" }}>
         <div
           className="hero-bg absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${faqHeroImage})` }}
@@ -267,7 +267,6 @@ const AboutUs = ({ onGetQuote = () => {} }) => {
         <div className="absolute left-0 top-0 bottom-0" style={{ width: "4px", background: "linear-gradient(180deg, transparent, #C6A35A 30%, #C6A35A 70%, transparent)" }} />
 
         <div className="relative z-10 w-full px-8 md:px-16 lg:px-24" style={{ maxWidth: "900px" }}>
-          <span className="section-label hero-sub" style={{ color: "#C6A35A" }}>About Us</span>
           <h1
             className="font-display hero-title"
             style={{ fontSize: "clamp(42px, 7vw, 82px)", fontWeight: 700, color: "white", lineHeight: 1.1, marginBottom: "28px" }}
@@ -415,7 +414,7 @@ const AboutUs = ({ onGetQuote = () => {} }) => {
       </section>
 
       {/* ── 6. MISSION / VISION / VALUES — dark band ────────── */}
-      <section style={{ background: "#0F2A44", padding: "80px 24px" }}>
+      <section style={{ background: "#0F2A44", padding: "30px 24px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <Reveal>
             <div style={{ textAlign: "center", marginBottom: "64px" }}>

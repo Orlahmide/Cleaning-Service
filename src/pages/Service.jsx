@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/icon.png";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 
 export default function Service({
   setShowQuoteModal,
@@ -137,70 +134,155 @@ export default function Service({
   return (
     <div className="min-h-screen bg-white">
       <style>{`
-            @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
-            
-            .font-playfair {
-            font-family: 'Playfair Display', serif;
-            }
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
+        
+        .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+        .font-body { font-family: 'Jost', 'Helvetica Neue', sans-serif; }
 
-            @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-            }
+        @keyframes bgZoom {
+          from { opacity: 0; transform: scale(1.05); }
+          to { opacity: 1; transform: scale(1); }
+        }
 
-            @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            }
+        @keyframes slideDown {
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
 
-            .animate-fadeIn {
-            animation: fadeIn 0.8s ease forwards;
-            }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
 
-            .animate-fadeInUp {
-            animation: fadeInUp 1s ease forwards;
-            opacity: 0;
-            }
-        `}</style>
+        @keyframes lineGrow {
+          from { width: 0; opacity: 0; }
+          to { width: 60px; opacity: 1; }
+        }
+
+        .hero-bg-animate { animation: bgZoom 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        .animate-slideDown { animation: slideDown 0.8s ease 0.2s both; }
+        .animate-fadeUp-1 { animation: fadeUp 0.9s ease 0.4s both; }
+        .animate-fadeUp-2 { animation: fadeUp 0.9s ease 0.6s both; }
+        .animate-fadeUp-3 { animation: fadeUp 0.9s ease 0.8s both; }
+        .animate-lineGrow { animation: lineGrow 0.8s ease 0.5s both; }
+
+        .breadcrumb-item {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          color: rgba(255, 255, 255, 0.6);
+          font-size: 13px;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+        }
+        .breadcrumb-item:last-child {
+          color: #C6A35A;
+        }
+
+        .feature-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 20px;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 50px;
+          font-size: 14px;
+          font-weight: 500;
+          transition: all 0.3s ease;
+        }
+        .feature-pill:hover {
+          background: rgba(198, 163, 90, 0.2);
+          border-color: rgba(198, 163, 90, 0.4);
+          transform: translateY(-2px);
+        }
+
+        .gold-divider {
+          display: inline-block;
+          width: 60px;
+          height: 2px;
+          background: #C6A35A;
+        }
+      `}</style>
 
       {/* Hero Section */}
-      <section className="relative pt-44 pb-20 px-6 text-white overflow-hidden">
-        {/* Background Image */}
+      <section
+        className="relative overflow-hidden"
+        style={{
+          minHeight: "65vh",
+          display: "flex",
+          alignItems: "center",
+          marginTop: "80px",
+        }}
+      >
+        {/* Background Image with Animation */}
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="hero-bg-animate absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${commercialImg})` }}
         />
 
-        {/* Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F2A44]/95 via-[#0F2A44]/90 to-[#1a3a5c]/85" />
+        {/* Refined Gradient Overlay */}
+        <div 
+          className="absolute inset-0" 
+          style={{
+            background: 'linear-gradient(110deg, rgba(15, 42, 68, 0.93) 0%, rgba(15, 42, 68, 0.88) 100%, rgba(26, 61, 92, 0.82) 100%)'
+          }}
+        />
 
-        {/* Content */}
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h1 className="font-playfair text-4xl md:text-6xl mb-6 animate-fadeInUp">
-            Professional Cleaning Services
-          </h1>
-          <p
-            className="text-xl text-[#C6A35A] mb-8 animate-fadeInUp"
-            style={{ animationDelay: "0.2s" }}
-          >
-            Tailored to Your Needs
-          </p>
-          <p
-            className="text-lg leading-relaxed max-w-3xl mx-auto animate-fadeInUp"
-            style={{ animationDelay: "0.4s" }}
-          >
-            At Talon Cleaning Services, we deliver reliable, detail-focused
-            cleaning solutions tailored to businesses, property operators, and
-            households. Our services are designed to maintain clean, healthy,
-            and welcoming environments through consistent standards and
-            professional management.
-          </p>
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute top-20 right-20 w-72 h-72 border border-white rounded-full"></div>
+          <div className="absolute bottom-16 left-16 w-56 h-56 border border-white rounded-full"></div>
+        </div>
+
+        {/* Vertical Gold Accent */}
+        <div 
+          className="absolute left-0 top-0 bottom-0 w-1"
+          style={{
+            background: 'linear-gradient(180deg, transparent 0%, #C6A35A 25%, #C6A35A 75%, transparent 100%)'
+          }}
+        />
+
+        {/* Content Container */}
+        <div className="relative z-10 w-full px-6 md:px-12">
+          <div className="max-w-5xl mx-auto">
+
+            {/* Main Content - Left Aligned for Editorial Feel */}
+            <div className="text-center md:text-center">
+              
+              {/* Badge */}
+              <div className="animate-fadeUp-1 mb-6">
+                <span className="font-body inline-block text-[10px] font-semibold tracking-[0.25em] uppercase text-[#C6A35A] px-5 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                  What We Offer
+                </span>
+              </div>
+
+              {/* Main Heading */}
+              <h1 className="animate-fadeUp-1 font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                Professional Cleaning<br />
+                <span className="italic text-[#C6A35A]">Tailored to Your Needs</span>
+              </h1>
+
+              {/* Decorative Divider */}
+              <div className="animate-fadeUp-2 flex items-center justify-center gap-4 mb-8">
+                <span className="gold-divider animate-lineGrow"></span>
+                <svg width="16" height="16" viewBox="0 0 20 20" className="text-[#C6A35A] opacity-70">
+                  <path fill="currentColor" d="M10,0 L12,8 L20,10 L12,12 L10,20 L8,12 L0,10 L8,8 Z" />
+                </svg>
+                <span className="gold-divider animate-lineGrow"></span>
+              </div>
+
+              {/* Description */}
+              <p className="animate-fadeUp-2 font-body text-base md:text-lg text-white/85 leading-relaxed max-w-3xl mx-auto mb-10">
+                At Talon Cleaning Services, we deliver reliable, detail-focused cleaning solutions 
+                tailored to businesses, property operators, and households. Our services maintain clean, 
+                healthy, and welcoming environments through consistent standards and professional management.
+              </p>
+
+            </div>
+          </div>
         </div>
       </section>
 

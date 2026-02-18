@@ -1,42 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function QuoteModal({
-  showQuoteModal,
-  setShowQuoteModal,
-  quoteSuccess,
-  setQuoteSuccess,
-}) {
+export default function QuoteModal({ showQuoteModal, setShowQuoteModal }) {
+  const [quoteMessage, setQuoteMessage] = useState(null); // { type, text }
+
   const handleQuoteSubmit = async (e) => {
     e.preventDefault();
-
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
+    const formData = Object.fromEntries(new FormData(e.target));
 
     try {
-      const response = await fetch("/api/quote", {
+      const res = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        // Email sent successfully
-        setQuoteSuccess(true);
-        e.target.reset();
+      if (res.ok) {
+        setQuoteMessage({
+          type: "success",
+          text: "Your quote request has been received. Our team will reach out to you soon.",
+        });
 
-        setTimeout(() => {
-          setQuoteSuccess(false);
-          setShowQuoteModal(false);
-        }, 3000);
+        // Send the auto-reply
+        try {
+          await fetch("/api/sendAutoReply", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: formData.name,
+              email: formData.email,
+            }),
+          });
+        } catch (err) {
+          console.error("Auto-reply failed:", err);
+        }
+        
+        e.target.reset();
       } else {
-        // Handle server error
-        const err = await response.json();
-        alert(`Error sending quote: ${err.message}`);
+        setQuoteMessage({
+          type: "error",
+          text: "An error occurred. Please try again later, or contact us via email or phone for assistance.",
+        });
       }
-    } catch (error) {
-      console.error("Quote submission error:", error);
-      alert("Something went wrong. Please try again later.");
+    } catch (err) {
+      setQuoteMessage({
+        type: "error",
+        text: "An error occurred. Please try again later, or contact us via email or phone for assistance.",
+      });
     }
+
+    // Auto-hide and close modal after 5 seconds
+    setTimeout(() => {
+      setQuoteMessage(null);
+      setShowQuoteModal(false); // close the modal whether success or error
+    }, 5000);
   };
 
   if (!showQuoteModal) return null;
@@ -58,7 +74,16 @@ export default function QuoteModal({
                       from { opacity: 0; }
                       to { opacity: 1; }
                     }
+                      @keyframes slideInFromRight {
+                    0% { transform: translateX(100%); opacity: 0; }
+                    100% { transform: translateX(0); opacity: 1; }
+                    }
+                    .animate-slideInFromRight {
+                    animation: slideInFromRight 0.5s ease forwards;
+                    }
 
+
+                    
                     @keyframes slideUp {
                       from {
                         transform: translateY(50px);
@@ -84,7 +109,7 @@ export default function QuoteModal({
                     .animate-slideUp {
                       animation: slideUp 0.3s ease;
                     }
-                `}</style>
+        `}</style>
 
         {/* Close Button */}
         <button
@@ -101,14 +126,23 @@ export default function QuoteModal({
         <h2 className="font-playfair text-2xl md:text-3xl text-[#0F2A44] mb-6 md:mb-8">
           Get a Free Quote
         </h2>
-
-        {/* SUCCESS ALERT AT THE TOP */}
-        {quoteSuccess && (
-          <div className="bg-green-100 border border-green-300 text-green-800 px-6 py-4 rounded mb-6 text-center animate-fadeInTop">
-            <strong>Thank you!</strong>
+        {/* SUCCESS / ERROR MESSAGE */}
+        {quoteMessage && (
+          <div
+            className={`fixed top-6 right-6 z-50 px-6 py-4 rounded-lg shadow-lg max-w-xs text-center transition-all duration-500 transform
+            ${
+              quoteMessage.type === "success"
+                ? "bg-green-100 border border-green-300 text-green-800"
+                : "bg-red-100 border border-red-300 text-red-800"
+            }
+            animate-slideInFromRight
+            `}
+          >
+            <strong>
+              {quoteMessage.type === "success" ? "Success!" : "Error!"}
+            </strong>
             <br />
-            Your quote request has been received. Our team will reach out to you
-            soon.
+            {quoteMessage.text}
           </div>
         )}
 
