@@ -135,7 +135,7 @@ export default function Home() {
 
       <section
         id="home"
-        className="relative min-h-[65vh] sm:min-h-screen flex items-center justify-center overflow-hidden px-6 md:px-12 pt-8 pb-8 sm:pt-0 sm:pb-0"
+        className="relative min-h-[65vh] sm:min-h-screen flex items-center justify-center overflow-hidden px-6 md:px-12 pt-10 pb-8 sm:pt-0 sm:pb-0"
       >
         {/* Background Image with Blur */}
         <div
@@ -195,7 +195,7 @@ export default function Home() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="hero-cta flex flex-row gap-3 justify-center mb-12">
+          <div className="hero-cta flex flex-row gap-3 justify-center mb-8">
             <button
               onClick={() => setShowQuoteModal(true)}
               className="btn-shimmer group bg-[#C6A35A] text-[#0F2A44] px-4 py-2 rounded-full font-body font-semibold text-xs tracking-wide uppercase transition-all duration-300 hover:bg-[#B89245] hover:shadow-xl hover:-translate-y-0.5"
@@ -212,7 +212,7 @@ export default function Home() {
           </div>
 
           {/* Trust Badges */}
-          <div className="hero-features grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto mt-16">
+          <div className="hero-features grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-3xl mx-auto mt-2">
             {[
               {
                 icon: (

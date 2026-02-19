@@ -215,7 +215,7 @@ export default function Service({
           minHeight: "65vh",
           display: "flex",
           alignItems: "center",
-          marginTop: "40px",
+          marginTop: "60px",
         }}
       >
         {/* Background Image with Animation */}
