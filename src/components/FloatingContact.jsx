@@ -3,7 +3,7 @@ import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 
 export default function FloatingContact() {
   const phoneNumber = "+07466311134";
-  const whatsappNumber = "2348067014209";
+  const whatsappNumber = "07466311134";
 
   const [isMounted, setIsMounted] = useState(false);
   const [bottomOffset, setBottomOffset] = useState(36);
