@@ -225,10 +225,10 @@ const Contact = ({ onGetQuote = () => {} }) => {
                       Call Us
                     </h3>
                     <a
-                      href="tel:07466311134"
+                      href="tel:+447466311134"
                       className="text-gray-700 hover:text-[#C6A35A] transition-colors text-sm"
                     >
-                      07466 311134
+                      +447466311134
                     </a>
                   </div>
                 </div>
@@ -243,7 +243,7 @@ const Contact = ({ onGetQuote = () => {} }) => {
                       WhatsApp
                     </h3>
                     <a
-                      href="https://wa.me/07466311134"
+                      href="https://wa.me/+447466311134"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-700 hover:text-[#25D366] transition-colors text-sm"

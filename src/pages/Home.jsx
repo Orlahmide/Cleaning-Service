@@ -212,18 +212,65 @@ export default function Home() {
           </div>
 
           {/* Trust Badges */}
-          <div className="hero-features flex flex-wrap gap-6 sm:gap-8 justify-center items-center">
+          <div className="hero-features grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto mt-16">
             {[
-              { text: "Always Reliable" },
-              { text: "Professionally Managed" },
-              { text: "Detail-Focused" },
+              {
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                ),
+                title: "Experienced Team",
+                description: "Trained professionals with years of expertise"
+              },
+              {
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                ),
+                title: "Fully Insured",
+                description: "Complete coverage for your peace of mind"
+              },
+              {
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                ),
+                title: "Eco-Friendly",
+                description: "Environmentally safe cleaning products"
+              },
+              {
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
+                ),
+                title: "Certified",
+                description: "Meeting professional industry standards"
+              }
             ].map((item, i) => (
-              <span
+              <div
                 key={i}
-                className="font-body text-sm font-medium text-white/90"
+                className="flex flex-col items-center text-center group animate-fadeInUp"
+                style={{ animationDelay: `${0.6 + i * 0.1}s` }}
               >
-                {item.text}
-              </span>
+                {/* Icon Circle */}
+                <div className="w-16 h-16 rounded-full bg-[#C6A35A]/10 flex items-center justify-center mb-4 text-[#C6A35A] group-hover:bg-[#C6A35A]/20 transition-all duration-300 group-hover:scale-110">
+                  {item.icon}
+                </div>
+
+                {/* Title */}
+                <h3 className="font-display text-lg font-bold text-white mb-2">
+                  {item.title}
+                </h3>
+
+                {/* Description */}
+                <p className="font-body text-sm text-white/70">
+                  {item.description}
+                </p>
+              </div>
             ))}
           </div>
         </div>
@@ -264,16 +311,16 @@ export default function Home() {
           </div>
 
           {/* Contact Note */}
-        <p className="text-[14px] mt-4 max-w-2xl mx-auto text-[#555]">
-          Don’t see your location listed?{" "}
-          <span
-            onClick={() => navigate("/contact")}
-            className="font-semibold text-[#C6A35A] cursor-pointer hover:underline"
-          >
-            Contact us
-          </span>{" "}
-          and we’ll discuss if we can arrange service in your area.
-        </p>
+          <p className="text-[14px] mt-4 max-w-2xl mx-auto text-[#555]">
+            Don’t see your location listed?{" "}
+            <span
+              onClick={() => navigate("/contact")}
+              className="font-semibold text-[#C6A35A] cursor-pointer hover:underline"
+            >
+              Contact us
+            </span>{" "}
+            and we’ll discuss if we can arrange service in your area.
+          </p>
         </div>
       </section>
 

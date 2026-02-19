@@ -2,22 +2,38 @@
 import React, { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
+import image1 from "../assets/BeforeAndAfterImages/PHOTO-1.jpg";
+import image2 from "../assets/BeforeAndAfterImages/PHOTO-2.jpg";
+import image3 from "../assets/BeforeAndAfterImages/PHOTO-3.jpg";
+import image4 from "../assets/BeforeAndAfterImages/PHOTO-4.jpg";
+import image5 from "../assets/BeforeAndAfterImages/PHOTO-5.jpg";
+import image6 from "../assets/BeforeAndAfterImages/PHOTO-6.jpg";
+import image7 from "../assets/BeforeAndAfterImages/PHOTO-7.jpg";
+import image8 from "../assets/BeforeAndAfterImages/PHOTO-8.jpg";
+import image9 from "../assets/BeforeAndAfterImages/PHOTO-9.jpg";
+import image10 from "../assets/BeforeAndAfterImages/PHOTO-10.jpg";
+import image11 from "../assets/BeforeAndAfterImages/PHOTO-11.jpg";
+import image12 from "../assets/BeforeAndAfterImages/PHOTO-12.jpeg";
+import image13 from "../assets/BeforeAndAfterImages/PHOTO-13.jpeg";
+import image14 from "../assets/BeforeAndAfterImages/PHOTO-14.jpeg";
+import image15 from "../assets/BeforeAndAfterImages/PHOTO-15.jpeg";
+import image16 from "../assets/BeforeAndAfterImages/PHOTO-16.jpeg";
+import image17 from "../assets/BeforeAndAfterImages/PHOTO-17.jpeg";
+import image18 from "../assets/BeforeAndAfterImages/PHOTO-18.jpeg";
+import image19 from "../assets/BeforeAndAfterImages/PHOTO-19.jpeg";
+import image20 from "../assets/BeforeAndAfterImages/PHOTO-20.jpeg";
+import image21 from "../assets/BeforeAndAfterImages/PHOTO-21.jpeg";
+import image22 from "../assets/BeforeAndAfterImages/PHOTO-22.jpeg";
+
+
+
+
 const BeforeAfterSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Images hardcoded inside the component
   const images = [
-    "/BeforeAndAfterImages/PHOTO-1.jpg",
-    "/BeforeAndAfterImages/PHOTO-2.jpg",
-    "/BeforeAndAfterImages/PHOTO-3.jpg",
-    "/BeforeAndAfterImages/PHOTO-4.jpg",
-    "/BeforeAndAfterImages/PHOTO-5.jpg",
-    "/BeforeAndAfterImages/PHOTO-6.jpg",
-    "/BeforeAndAfterImages/PHOTO-7.jpg",
-    "/BeforeAndAfterImages/PHOTO-8.jpg",
-    "/BeforeAndAfterImages/PHOTO-9.jpg",
-    "/BeforeAndAfterImages/PHOTO-10.jpg",
-    "/BeforeAndAfterImages/PHOTO-11.jpg",
+    image1,image2,image3,image4,image5,image6,image7,image8,image9,image10,image11,image12,image13,image14,image15,image16,image17,image18,image19,image20,image21,image22
   ];
 
   // Move to previous slide
@@ -32,11 +48,14 @@ const BeforeAfterSlider = () => {
 
   // Auto-advance every 5 seconds
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 4000); // change slide every 5 seconds
-    return () => clearInterval(interval); // cleanup on unmount
-  }, []);
+  const interval = setInterval(() => {
+    setCurrentIndex((prev) =>
+      prev === images.length - 1 ? 0 : prev + 1
+    );
+  }, 7000);
+
+  return () => clearInterval(interval);
+}, [currentIndex]); // 
 
   return (
     <section className="bg-gray-50 py-2 px-3 mb-10 text-center">
