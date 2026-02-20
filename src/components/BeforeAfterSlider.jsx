@@ -17,13 +17,10 @@ import image12 from "../assets/BeforeAndAfterImages/PHOTO-12.jpeg";
 import image13 from "../assets/BeforeAndAfterImages/PHOTO-13.jpeg";
 import image14 from "../assets/BeforeAndAfterImages/PHOTO-14.jpeg";
 import image15 from "../assets/BeforeAndAfterImages/PHOTO-15.jpeg";
-import image16 from "../assets/BeforeAndAfterImages/PHOTO-16.jpeg";
 import image17 from "../assets/BeforeAndAfterImages/PHOTO-17.jpeg";
 import image18 from "../assets/BeforeAndAfterImages/PHOTO-18.jpeg";
 import image19 from "../assets/BeforeAndAfterImages/PHOTO-19.jpeg";
-import image20 from "../assets/BeforeAndAfterImages/PHOTO-20.jpeg";
 import image21 from "../assets/BeforeAndAfterImages/PHOTO-21.jpeg";
-import image22 from "../assets/BeforeAndAfterImages/PHOTO-22.jpeg";
 
 
 
@@ -33,7 +30,7 @@ const BeforeAfterSlider = () => {
 
   // Images hardcoded inside the component
   const images = [
-    image1,image2,image3,image4,image5,image6,image7,image8,image9,image10,image11,image12,image13,image14,image15,image16,image17,image18,image19,image20,image21,image22
+    image1,image2,image3,image4,image5,image6,image7,image8,image9,image10,image11,image12,image13,image14,image15,image17,image18,image19,image21
   ];
 
   // Move to previous slide
