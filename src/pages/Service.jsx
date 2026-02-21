@@ -90,16 +90,17 @@ export default function Service({
     },
     domestic: {
       id: "domestic",
-      title: "Domestic & General Cleaning",
+      title: "Domestic/Residential Cleaning",
       subtitle: "Making Everyday Living Easier",
       description:
         "We support busy households with dependable cleaning services that make everyday living easier.",
       image: domesticImg,
       includes: [
         "Regular home cleaning",
-        "Deep cleaning",
-        "General/standard cleaning",
         "One-off or scheduled cleans",
+        "General/Standard/Maintenance cleaning",
+        "Deep cleaning",
+        "After-build cleaning",
       ],
       benefits: [
         "More time for what matters most",
@@ -396,7 +397,7 @@ export default function Service({
       <div className="my-2 flex justify-center"></div>
       <BeforeAfterSlider />
 
-       {/* CTA Section */}
+      {/* CTA Section */}
       <section
         id="contact"
         className="relative overflow-hidden bg-[#FFF9F0] py-6 px-6"
